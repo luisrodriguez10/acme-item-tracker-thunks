@@ -40,12 +40,16 @@ const Users = ({
                     <ul>
                       {userThings.map((thing) => {
                         return (
-                          <li key={thing.id}>
+                          <div className="ListThings">
+                            <li key={thing.id}>
                             {thing.name} ({thing.ranking})
-                            <button onClick={() => removeThingFromUser(thing)}>
-                              x
-                            </button>
+                            
                           </li>
+                          <button onClick={() => removeThingFromUser(thing)}>
+                          x
+                        </button>
+                          </div>
+                          
                         );
                       })}
                     </ul>
