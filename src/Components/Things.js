@@ -1,7 +1,7 @@
 import React from 'react';
 import ThingForm from './ThingForm';
 import { connect } from 'react-redux';
-import { deleteThing, updateThing } from './store';
+import { deleteThing, updateThing } from '../store';
 
 const Things = ({ things, users, deleteThing, increment, updateThing })=> {
   return (

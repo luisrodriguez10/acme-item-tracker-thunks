@@ -106,16 +106,12 @@ div#Things > *{
 div#Users > *{
     margin: 0.75rem;
 }
+
 #CreateUser{
     display: flex;
     justify-content: center;
 }
 
-div.ListThings{
-    display: flex;
+ul.ListThings{
     list-style-type: none;
-}
-
-div.ListThings li {
-    flex: 0.75;
 }

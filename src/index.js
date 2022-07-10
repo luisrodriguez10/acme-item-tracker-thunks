@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { createRoot } from 'react-dom/client';
-import Nav from './Nav';
-import Users from './Users';
-import Things from './Things';
-import Home from './Home';
+import Nav from './Components/Nav';
+import Users from './Components/Users';
+import Things from './Components/Things';
+import Home from './Components/Home';
 import store, {loadData} from './store';
 import { Provider, connect } from 'react-redux';
 

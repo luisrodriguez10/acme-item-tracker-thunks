@@ -63,7 +63,7 @@ const Home = ({ users, things, topRankedThing, topRankedUser }) => {
                 </tr>
                 {
                   topRankedUser.map(user => {
-                    const thingUserCount = things.filter(thing => thing.id === user.id);
+                    const thingUserCount = things.filter(thing => thing.userId === user.id);
                     return (
                       <tr key={user.id}>
                         <td>{user.name}</td>

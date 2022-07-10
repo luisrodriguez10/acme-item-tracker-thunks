@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {createThing} from './store';
+import {createThing} from '../store';
 
 const ThingForm = ({ createThing })=> {
   return (
