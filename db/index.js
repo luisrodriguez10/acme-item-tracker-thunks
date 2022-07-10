@@ -1,33 +1,22 @@
-const Sequelize = require('sequelize');
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/the_acme_item_tracker_db');
+const {conn} = require('./conn');
+const { USERS, THINGS } = require('./seed-data');
+const {User} = require('./User');
+const {Thing} = require('./Thing');
 
-const { STRING, INTEGER } = Sequelize;
+const seeder = async() => {
 
-const User = conn.define('user', {
-  name: {
-    type: STRING 
+  try {
+    await conn.sync({force: true});
+    await Promise.all(USERS.map((user) => User.create(user)));
+    await Promise.all(THINGS.map((thing) => Thing.create(thing)));
+
+  } catch (ex) {
+    console.log(ex);
   }
-});
+}
 
-const Thing = conn.define('thing', {
-  name: {
-    type: STRING 
-  },
-  ranking: {
-    type: INTEGER,
-    defaultValue: 1
-  }
-});
 
-Thing.belongsTo(User);
-Thing.addHook('beforeValidate', (thing) => {
-  if(!thing.userId){
-    thing.userId = null;
-  }
-});
 
 module.exports = {
-  conn,
-  User,
-  Thing
+  seeder
 };
