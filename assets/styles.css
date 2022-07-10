@@ -1,0 +1,112 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:azure;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:cadetblue;
+    max-height: 10%;
+    min-height: 40px;
+}
+
+p.HomeMsg{
+    text-align: center;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+nav a{
+    text-decoration: none;
+    color:black;
+}
+  
+nav a.selected {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: azure;
+}
+
+ul > * {
+    margin: 0.25rem;
+}
+
+li > * {
+    margin: 0.25rem;
+}
+
+table {
+    border-collapse: collapse;
+  }
+  
+table,
+th,
+td {
+    border: 1.5px solid #222222;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: center;
+}
+
+th{
+    background-color: cadetblue;
+}
+
+tr:hover {
+  background-color:rgb(188, 225, 227);
+}
+
+#Ranking{
+    display: flex;
+}
+
+section{
+    flex: 1
+}
+
+#UserRanking{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ThingRanking{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#CreateThing{
+    display: flex;
+    justify-content: center;
+}
+
+#Things{
+    display: flex;
+    flex-direction: column;
+}
+
+div#Things > *{
+    margin: 0.75rem;
+}
+
+#Users{
+    display: flex;
+    flex-direction: column;
+}
+
+div#Users > *{
+    margin: 0.75rem;
+}
+#CreateUser{
+    display: flex;
+    justify-content: center;
+}

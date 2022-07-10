@@ -4,12 +4,6 @@ import thunk from "redux-thunk";
 import axios from "axios";
 const { faker } = require("@faker-js/faker");
 
-const initialState = {
-  view: window.location.hash.slice(1),
-  users: [],
-  things: [],
-};
-
 const viewReducer = (state = window.location.hash.slice(1), action) => {
   if (action.type === "SET_VIEW") {
     return action.view;
@@ -26,6 +20,9 @@ const usersReducer = (state = [], action) => {
   }
   if (action.type === "CREATE_USER") {
     return [...state, action.user];
+  }
+  if (action.type === "UPDATE_USER") {
+    return state.map(user => user.id !== action.user.id ? user : action.user);
   }
   return state;
 };
@@ -123,6 +120,16 @@ const loadData = () =>{
   }
 }
 
+const updateRanking = (user) =>{
+  return async(dispatch) =>{
+    user = (await axios.put(`/api/users/${user.id}`, user)).data;
+    dispatch({
+      type: 'UPDATE_USER',
+      user
+    })
+  }
+}
+
 const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 export {
@@ -132,7 +139,8 @@ export {
   removeThingFromUser,
   deleteUser,
   createThing,
-  loadData
+  loadData,
+  updateRanking
 };
 
 export default store;

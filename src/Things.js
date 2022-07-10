@@ -5,18 +5,29 @@ import { deleteThing, updateThing } from './store';
 
 const Things = ({ things, users, deleteThing, increment, updateThing })=> {
   return (
-    <div>
-      <h1>Things</h1>
-      <ul>
-        {
-          things.map( thing => {
-            const user = users.find(user => user.id === thing.userId) || {};
-
-            return (
-              <li key={ thing.id }>
-                { thing.name } ({ thing.ranking })
-                owned by { user.name || 'nobody' }
-                <div>
+    <div id='Things'>
+      <h1>Welcome to the Things Page</h1>
+      <ThingForm />
+      <table>
+        <tbody>
+          <tr>
+            <th>Thing</th>
+            <th>Current Owner</th>
+            <th>Ranking</th>
+            <th>Increase/Decrease Ranking</th>
+            <th>Change Owner</th>
+            <th>Delete</th>
+          </tr>
+          {
+            things.map(thing => {
+              const user = users.find(user => user.id === thing.userId) || {};
+              return(
+                <tr key={thing.id}>
+                  <td>{ thing.name }</td>
+                  <td>{ user.name || 'nobody' }</td>
+                  <td>{ thing.ranking }</td>
+                  <td><button onClick={()=> increment(thing, -1)} disabled={thing.ranking < 2}>-</button><button onClick={()=> increment(thing, 1)}>+</button></td>
+                  <td>
                   <select defaultValue={ thing.userId } onChange={ ev => updateThing(thing, ev.target.value )}>
                     <option value=''>-- nobody --</option>
                     {
@@ -27,17 +38,14 @@ const Things = ({ things, users, deleteThing, increment, updateThing })=> {
                       })
                     }
                   </select>
-                </div>
-                <button onClick={ ()=> deleteThing(thing)}>x</button>
-                <button onClick={()=> increment(thing, -1)}>-</button>
-                <button onClick={()=> increment(thing, 1)}>+</button>
-                
-              </li>
-            );
-          })
-        }
-      </ul>
-      <ThingForm />
+                  </td>
+                  <td><button onClick={ ()=> deleteThing(thing)}>Delete</button></td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
     </div>
   );
 };

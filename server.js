@@ -7,6 +7,7 @@ const path = require('path');
 
 app.use(express.json());
 app.use('/dist', express.static('dist'));
+app.use('/assets', express.static('assets'));
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
@@ -34,6 +35,17 @@ app.put('/api/things/:id', async(req, res, next)=> {
     const thing = await Thing.findByPk(req.params.id);
     await thing.update(req.body);
     res.send(thing);
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.put('/api/users/:id', async(req, res, next)=> {
+  try {
+    const user = await User.findByPk(req.params.id);
+    await user.update(req.body);
+    res.send(user);
   }
   catch(ex){
     next(ex);

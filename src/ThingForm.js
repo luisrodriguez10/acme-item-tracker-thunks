@@ -4,15 +4,15 @@ import {createThing} from './store';
 
 const ThingForm = ({ createThing })=> {
   return (
-    <div>
-      <button onClick={ createThing }>+</button>
+    <div id='CreateThing'>
+      <button onClick={ createThing }>Add Thing</button>
     </div>
   );
 };
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    createThing: async()=> {
+    createThing: ()=> {
       dispatch(createThing());
     }
   };
