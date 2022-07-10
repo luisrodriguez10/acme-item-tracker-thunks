@@ -6,6 +6,7 @@ const THINGS = [];
 function createRandomUser() {
   return {
     name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+    ranking: 5
   };
 }
 
